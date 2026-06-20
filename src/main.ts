@@ -1,7 +1,7 @@
-import { RayTracerApp } from './app/RayTracerApp';
+import { DungeonApp } from './app/DungeonApp';
 import './styles/raytracer.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new RayTracerApp({ containerId: 'screen' });
-  app.start();
+  const app = new DungeonApp();
+  app.init();
 });

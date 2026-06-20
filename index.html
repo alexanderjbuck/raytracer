@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A browser-based software raytracer written in TypeScript. Renders a canvas scene with per-pixel ray casting and diffuse shading."
+      content="A browser-based raytracer dungeon explorer. Use a game code to generate a maze, find the key, and reach the exit."
     />
     <meta name="theme-color" content="#111111" />
     <meta name="color-scheme" content="dark" />
     <meta property="og:title" content="Raytracer" />
     <meta
       property="og:description"
-      content="A browser-based software raytracer written in TypeScript."
+      content="Explore a seeded dungeon, collect the key, and escape."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://alexanderjbuck.github.io/raytracer/" />
@@ -24,9 +24,38 @@
     <main class="page">
       <header class="page__header">
         <h1 class="page__title">Raytracer</h1>
-        <p class="page__subtitle">Software ray casting in the browser</p>
+        <p class="page__subtitle">Seeded dungeon explorer</p>
       </header>
-      <div id="screen" class="page__canvas" aria-label="Raytracer output"></div>
+
+      <section id="lobby" class="lobby">
+        <label class="lobby__label" for="game-code">Game code</label>
+        <div class="lobby__controls">
+          <input
+            id="game-code"
+            class="lobby__input"
+            type="text"
+            maxlength="16"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Enter code"
+          />
+          <button id="btn-random" class="icon-button" type="button" aria-label="Random game code" title="Random code">
+            &#127922;
+          </button>
+          <button id="btn-play" class="icon-button icon-button--primary" type="button" aria-label="Start game" title="Start">
+            &#9654;
+          </button>
+        </div>
+      </section>
+
+      <button id="btn-help" class="help-button" type="button" aria-label="Help" title="Help">?</button>
+
+      <section id="game-panel" class="game-panel" hidden>
+        <div id="status-bar" class="status-bar"></div>
+        <div id="screen" class="page__canvas" aria-label="Game view"></div>
+        <p class="controls-hint">WASD / arrows to move. Click the view and use the mouse to look.</p>
+      </section>
+
       <footer class="page__footer">
         <a
           class="page__link"
@@ -38,6 +67,21 @@
         </a>
       </footer>
     </main>
+
+    <div id="help-modal" class="modal" hidden>
+      <div class="modal__panel" role="dialog" aria-labelledby="help-title" aria-modal="true">
+        <h2 id="help-title" class="modal__title">How to play</h2>
+        <ul class="modal__list">
+          <li>Enter a <strong>game code</strong> or roll a random one. The same code always generates the same dungeon.</li>
+          <li>Explore the 64×64 maze of rooms and corridors from a first-person view.</li>
+          <li>Find the <strong>key</strong> somewhere in the reachable maze.</li>
+          <li>Reach the <strong>exit</strong> on the outer wall. It stays locked until you have the key.</li>
+          <li>Move with <strong>WASD</strong> or arrow keys. Click the game view to capture the mouse and look around.</li>
+        </ul>
+        <button id="help-close" class="modal__close" type="button">Close</button>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
