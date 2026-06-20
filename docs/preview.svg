@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200" role="img" aria-label="Three shaded spheres on a black background">
+  <rect width="500" height="200" fill="#000"/>
+  <circle cx="250" cy="118" r="35" fill="#003300"/>
+  <circle cx="250" cy="100" r="26" fill="#330000"/>
+  <circle cx="250" cy="86" r="18" fill="#000033"/>
+</svg>

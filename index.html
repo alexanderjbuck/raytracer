@@ -3,10 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A browser-based software raytracer written in TypeScript. Renders a canvas scene with per-pixel ray casting and diffuse shading."
+    />
+    <meta name="theme-color" content="#111111" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:title" content="Raytracer" />
+    <meta
+      property="og:description"
+      content="A browser-based software raytracer written in TypeScript."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexanderjbuck.github.io/raytracer/" />
+    <meta property="og:image" content="https://alexanderjbuck.github.io/raytracer/preview.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Raytracer</title>
   </head>
   <body>
-    <div id="screen"></div>
+    <main class="page">
+      <header class="page__header">
+        <h1 class="page__title">Raytracer</h1>
+        <p class="page__subtitle">Software ray casting in the browser</p>
+      </header>
+      <div id="screen" class="page__canvas" aria-label="Raytracer output"></div>
+      <footer class="page__footer">
+        <a
+          class="page__link"
+          href="https://github.com/alexanderjbuck/raytracer"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Source on GitHub
+        </a>
+      </footer>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
