@@ -1,17 +1,7 @@
+import { applyCameraPitch } from '../scene/camera';
 import { trace } from '../raytrace/tracer';
 import type { Color, RenderConfig, Vec3, World } from '../scene/types';
 import { PixelBuffer } from './PixelBuffer';
-
-function applyCameraPitch(dir: Vec3, pitch: number): Vec3 {
-  const cos = Math.cos(pitch);
-  const sin = Math.sin(pitch);
-
-  return [
-    dir[0],
-    dir[1] * cos + dir[2] * sin,
-    -dir[1] * sin + dir[2] * cos,
-  ];
-}
 
 export class CanvasRenderer {
   private readonly world: World;

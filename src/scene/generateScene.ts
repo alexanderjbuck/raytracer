@@ -36,6 +36,7 @@ function makePrimitive(type: PrimitiveType, x: number, z: number, rng: Rng): Sce
         color,
         radius,
         specular,
+        emissive: false,
       };
     }
     case 'cube': {
@@ -112,6 +113,10 @@ export function generateScene(primitiveCount = 28, seed = Date.now()): World {
       ambient: 0.08,
     },
     objects,
-    lights: sceneLighting,
+    lights: sceneLighting.map((light) => ({
+      ...light,
+      location: [...light.location] as [number, number, number],
+      color: [...light.color] as [number, number, number],
+    })),
   };
 }

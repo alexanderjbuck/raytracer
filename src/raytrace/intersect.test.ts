@@ -18,6 +18,7 @@ const sphere: Sphere = {
   color: [255, 0, 0],
   radius: 1,
   specular: 0,
+  emissive: false,
 };
 
 const plane: Plane = {

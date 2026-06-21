@@ -69,6 +69,13 @@ export function trace(rayPos: Vec3, rayDir: Vec3, color: Color, world: World): v
     return;
   }
 
+  if (nearest.object.type === 'sphere' && nearest.object.emissive) {
+    color[0] = Math.min(255, Math.floor(nearest.object.color[0] * 1.15));
+    color[1] = Math.min(255, Math.floor(nearest.object.color[1] * 1.15));
+    color[2] = Math.min(255, Math.floor(nearest.object.color[2] * 1.1));
+    return;
+  }
+
   const light = world.lights[0];
   const contribution = pointLightContribution(world, nearest, light);
   const shaded = shadeHit(

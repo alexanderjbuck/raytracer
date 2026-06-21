@@ -20,6 +20,7 @@ export interface Sphere {
   color: Color;
   radius: number;
   specular: number;
+  emissive: boolean;
 }
 
 export interface Cube {
@@ -71,9 +72,16 @@ export interface World {
   lights: Light[];
 }
 
+export interface LightMotionConfig {
+  speed: number;
+  driftAccel: number;
+  dampingPerSecond: number;
+}
+
 export interface RenderConfig {
   width: number;
   height: number;
   resolution: number;
   frameIntervalMs: number;
+  lightMotion?: LightMotionConfig;
 }

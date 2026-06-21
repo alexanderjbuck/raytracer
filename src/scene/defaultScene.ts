@@ -1,3 +1,8 @@
+import { viewCenterAtDepth } from './camera';
+import {
+  DEFAULT_LIGHT_DEPTH,
+  DEFAULT_LIGHT_MOTION,
+} from './lightAnimator';
 import type { Light, World } from './types';
 
 export const sceneCamera = {
@@ -9,8 +14,8 @@ export const sceneCamera = {
 
 export const sceneLighting: Light[] = [
   {
-    location: [-3, 4, -4],
-    color: [0xff, 0xf8, 0xf4],
+    location: viewCenterAtDepth(sceneCamera, DEFAULT_LIGHT_DEPTH),
+    color: [0xff, 0xf4, 0xc8],
     range: 42,
     intensity: 2.4,
   },
@@ -31,4 +36,5 @@ export const defaultRenderConfig = {
   height: 400,
   resolution: 0.5,
   frameIntervalMs: 50,
+  lightMotion: DEFAULT_LIGHT_MOTION,
 } as const;

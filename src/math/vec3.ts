@@ -24,3 +24,11 @@ export function vec3Subtract(v1: Vec3, v2: Vec3): Vec3 {
 export function vec3DotProduct(v1: Vec3, v2: Vec3): number {
   return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
 }
+
+export function vec3Lerp(v1: Vec3, v2: Vec3, t: number): Vec3 {
+  return [
+    v1[0] + (v2[0] - v1[0]) * t,
+    v1[1] + (v2[1] - v1[1]) * t,
+    v1[2] + (v2[2] - v1[2]) * t,
+  ];
+}

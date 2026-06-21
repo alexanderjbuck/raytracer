@@ -8,6 +8,7 @@ const HELP_CONTENT: HelpContent = {
   items: [
     'Press play to render a new scene.',
     'Random spheres, cubes, cones, and cylinders on a colored checkerboard plane.',
+    'A small glowing sphere marks the point light as it drifts slowly through the scene.',
   ],
 };
 
