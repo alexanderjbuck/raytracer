@@ -109,6 +109,7 @@ export function generateScene(primitiveCount = 28, seed = Date.now()): World {
     camera: sceneCamera,
     scene: {
       background: [0x20, 0x22, 0x28],
+      ambient: 0.08,
     },
     objects,
     lights: sceneLighting,

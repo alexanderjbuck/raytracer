@@ -290,3 +290,21 @@ export function rayObjectIntersect(
       return rayConeIntersect(rayPos, rayDir, object);
   }
 }
+
+export function raySceneIntersect(
+  rayPos: Vec3,
+  rayDir: Vec3,
+  objects: SceneObject[],
+  maxDistance: number,
+): HitRecord | null {
+  let nearest: HitRecord | null = null;
+
+  for (const object of objects) {
+    const hit = rayObjectIntersect(rayPos, rayDir, object);
+    if (hit && hit.t > EPSILON && hit.t < maxDistance && (nearest === null || hit.t < nearest.t)) {
+      nearest = hit;
+    }
+  }
+
+  return nearest;
+}

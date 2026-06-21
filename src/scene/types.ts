@@ -60,11 +60,13 @@ export interface HitRecord {
 export interface Light {
   location: Vec3;
   color: Color;
+  range: number;
+  intensity: number;
 }
 
 export interface World {
   camera: Camera;
-  scene: { background: Color };
+  scene: { background: Color; ambient: number };
   objects: SceneObject[];
   lights: Light[];
 }
