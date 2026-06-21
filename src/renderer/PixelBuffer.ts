@@ -25,6 +25,14 @@ export class PixelBuffer {
     return this.imageData;
   }
 
+  getPixel(index: number): Color {
+    const pixel = this.data[index];
+    if (this.littleEndian) {
+      return [pixel & 0xff, (pixel >> 8) & 0xff, (pixel >> 16) & 0xff];
+    }
+    return [(pixel >> 24) & 0xff, (pixel >> 16) & 0xff, (pixel >> 8) & 0xff];
+  }
+
   setPixel(index: number, color: Color): void {
     const r = color[0];
     const g = color[1];

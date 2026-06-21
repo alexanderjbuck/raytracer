@@ -2,6 +2,17 @@ import { trace } from '../raytrace/tracer';
 import type { Color, RenderConfig, Vec3, World } from '../scene/types';
 import { PixelBuffer } from './PixelBuffer';
 
+function applyCameraPitch(dir: Vec3, pitch: number): Vec3 {
+  const cos = Math.cos(pitch);
+  const sin = Math.sin(pitch);
+
+  return [
+    dir[0],
+    dir[1] * cos + dir[2] * sin,
+    -dir[1] * sin + dir[2] * cos,
+  ];
+}
+
 export class CanvasRenderer {
   private readonly world: World;
   private readonly container: HTMLElement;
@@ -49,7 +60,8 @@ export class CanvasRenderer {
     const fovy = (this.bufferHeight / this.bufferWidth) * fovx;
     const tanfovx = Math.tan(fovx);
     const tanfovy = Math.tan(fovy);
-    const cameraPos: Vec3 = [0, 0, 0];
+    const cameraPos = this.world.camera.location;
+    const pitch = this.world.camera.pitch;
 
     let pixelIndex = 0;
 
@@ -57,8 +69,9 @@ export class CanvasRenderer {
       for (let u = 0; u < this.bufferWidth; u++) {
         ray[0] = ((2 * u - this.bufferWidth) / this.bufferWidth) * tanfovx;
         ray[1] = ((2 * (this.bufferHeight - v) - this.bufferHeight) / this.bufferHeight) * tanfovy;
+        ray[2] = -this.world.camera.depth;
 
-        trace(cameraPos, ray, color, this.world);
+        trace(cameraPos, applyCameraPitch(ray, pitch), color, this.world);
         this.pixelBuffer.setPixel(pixelIndex, color);
         pixelIndex++;
       }

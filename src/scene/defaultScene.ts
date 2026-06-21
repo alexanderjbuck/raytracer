@@ -1,45 +1,31 @@
-import type { World } from './types';
+import type { Light, World } from './types';
+
+export const sceneCamera = {
+  fovx: Math.PI / 4,
+  location: [0, 0.8, 2.5] as [number, number, number],
+  depth: 1,
+  pitch: 0.28,
+};
+
+export const sceneLighting: Light[] = [
+  {
+    location: [-3, 4, -4],
+    color: [0xff, 0xf8, 0xf4],
+  },
+];
 
 export const defaultScene: World = {
-  camera: {
-    fovx: Math.PI / 4,
-    location: [0, 0, 0],
-    depth: 1,
-  },
+  camera: sceneCamera,
   scene: {
-    background: [0x00, 0x00, 0x00],
+    background: [0x20, 0x22, 0x28],
   },
-  objects: [
-    {
-      type: 'sphere',
-      location: [0, -1.5, -10],
-      color: [0x00, 0xff, 0x00],
-      radius: 1,
-    },
-    {
-      type: 'sphere',
-      location: [0, 0, -10],
-      color: [0xff, 0x00, 0x00],
-      radius: 0.75,
-    },
-    {
-      type: 'sphere',
-      location: [0, 1, -10],
-      color: [0x00, 0x00, 0xff],
-      radius: 0.5,
-    },
-  ],
-  lights: [
-    {
-      location: [-2, 2, -6],
-      color: [0xff, 0xf0, 0xee],
-    },
-  ],
+  objects: [{ type: 'plane', y: -2 }],
+  lights: sceneLighting,
 };
 
 export const defaultRenderConfig = {
-  width: 500,
-  height: 200,
-  resolution: 0.35,
+  width: 640,
+  height: 400,
+  resolution: 0.5,
   frameIntervalMs: 50,
 } as const;

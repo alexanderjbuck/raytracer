@@ -1,20 +1,12 @@
 export interface Rng {
   next(): number;
   int(min: number, max: number): number;
+  float(min: number, max: number): number;
   pick<T>(items: readonly T[]): T;
 }
 
-export function hashSeed(seed: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < seed.length; i++) {
-    h ^= seed.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-}
-
-export function createRng(seed: string): Rng {
-  let state = hashSeed(seed);
+export function createRng(seed = Date.now()): Rng {
+  let state = seed >>> 0;
 
   return {
     next(): number {
@@ -27,6 +19,10 @@ export function createRng(seed: string): Rng {
 
     int(min: number, max: number): number {
       return Math.floor(this.next() * (max - min + 1)) + min;
+    },
+
+    float(min: number, max: number): number {
+      return min + this.next() * (max - min);
     },
 
     pick<T>(items: readonly T[]): T {

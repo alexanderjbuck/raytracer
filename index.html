@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A browser-based raytracer dungeon explorer. Find the key and escape the maze."
+      content="A browser-based software raytracer with geometric primitives."
     />
     <meta name="theme-color" content="#111111" />
     <meta name="color-scheme" content="dark" />
     <meta property="og:title" content="Raytracer" />
     <meta
       property="og:description"
-      content="Explore a randomly generated dungeon, collect the key, and escape."
+      content="Software raytracer with sphere, cube, cone, cylinder, and a colored ground plane."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://alexanderjbuck.github.io/raytracer/" />
@@ -34,17 +34,15 @@
     <main class="page">
       <header class="page__header">
         <h1 class="page__title">Raytracer</h1>
-        <p class="page__subtitle">Seeded dungeon explorer</p>
+        <p class="page__subtitle">Software raytracer</p>
       </header>
 
       <button id="btn-help" class="help-button" type="button" aria-label="Help" title="Help">?</button>
 
       <section id="game-panel" class="game-panel">
-        <div id="status-bar" class="status-bar" hidden></div>
         <div class="game-screen">
-          <div id="screen" class="game-screen__viewport" aria-label="Game view"></div>
+          <div id="screen" class="game-screen__viewport" aria-label="Render view"></div>
           <div id="screen-overlay" class="screen-overlay">
-            <p id="overlay-message" class="screen-overlay__message" hidden></p>
             <button
               id="btn-play"
               class="screen-overlay__play"
@@ -56,7 +54,6 @@
             </button>
           </div>
         </div>
-        <p class="controls-hint">WASD / arrows to move. Tap the view to look around.</p>
       </section>
 
       <footer class="page__footer">
