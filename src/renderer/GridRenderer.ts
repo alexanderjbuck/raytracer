@@ -1,4 +1,4 @@
-import { castRay } from '../raycast/cast';
+import { castRay, hasLineOfSight } from '../raycast/cast';
 import { CellType, type GridWorld, type PlayerState } from '../world/types';
 import { PixelBuffer } from './PixelBuffer';
 
@@ -39,6 +39,10 @@ function drawKeySprite(
   const dy = keyY - player.y;
   const distance = Math.hypot(dx, dy);
   if (distance > 6 || distance < 0.2) {
+    return;
+  }
+
+  if (!hasLineOfSight(world, player.x, player.y, keyX, keyY)) {
     return;
   }
 

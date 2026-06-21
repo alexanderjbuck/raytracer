@@ -2,7 +2,6 @@ import { generateGameCode } from '../util/randomCode';
 
 export interface LobbyHandlers {
   onPlay: (gameCode: string) => void;
-  onHelp: () => void;
 }
 
 export class Lobby {
@@ -10,21 +9,17 @@ export class Lobby {
   private readonly input: HTMLInputElement;
   private readonly randomButton: HTMLButtonElement;
   private readonly playButton: HTMLButtonElement;
-  private readonly helpButton: HTMLButtonElement;
-
   constructor(rootId: string, handlers: LobbyHandlers) {
     const root = document.getElementById(rootId);
     const input = document.getElementById('game-code');
     const randomButton = document.getElementById('btn-random');
     const playButton = document.getElementById('btn-play');
-    const helpButton = document.getElementById('btn-help');
 
     if (
       !root ||
       !(input instanceof HTMLInputElement) ||
       !(randomButton instanceof HTMLButtonElement) ||
-      !(playButton instanceof HTMLButtonElement) ||
-      !(helpButton instanceof HTMLButtonElement)
+      !(playButton instanceof HTMLButtonElement)
     ) {
       throw new Error('Lobby elements not found');
     }
@@ -33,7 +28,6 @@ export class Lobby {
     this.input = input;
     this.randomButton = randomButton;
     this.playButton = playButton;
-    this.helpButton = helpButton;
 
     this.randomButton.addEventListener('click', () => {
       this.input.value = generateGameCode();
@@ -48,8 +42,6 @@ export class Lobby {
       }
       handlers.onPlay(code);
     });
-
-    this.helpButton.addEventListener('click', handlers.onHelp);
 
     this.input.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {

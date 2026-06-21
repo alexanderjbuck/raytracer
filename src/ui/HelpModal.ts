@@ -1,29 +1,56 @@
 export class HelpModal {
-  private readonly modal: HTMLElement;
+  private readonly dialog: HTMLDialogElement;
+  private readonly panel: HTMLElement;
   private readonly closeButton: HTMLButtonElement;
 
-  constructor(modalId: string, closeButtonId: string) {
-    const modal = document.getElementById(modalId);
+  constructor(dialogId: string, closeButtonId: string) {
+    const dialog = document.getElementById(dialogId);
     const closeButton = document.getElementById(closeButtonId);
-    if (!modal || !(closeButton instanceof HTMLButtonElement)) {
+    if (!(dialog instanceof HTMLDialogElement) || !(closeButton instanceof HTMLButtonElement)) {
       throw new Error('Help modal elements not found');
     }
-    this.modal = modal;
+
+    const panel = dialog.querySelector('.modal__panel');
+    if (!(panel instanceof HTMLElement)) {
+      throw new Error('Help modal panel not found');
+    }
+
+    this.dialog = dialog;
+    this.panel = panel;
     this.closeButton = closeButton;
 
     this.closeButton.addEventListener('click', () => this.hide());
-    this.modal.addEventListener('click', (event) => {
-      if (event.target === this.modal) {
+    this.dialog.addEventListener('click', (event) => {
+      if (!this.isOpen()) {
+        return;
+      }
+
+      const rect = this.panel.getBoundingClientRect();
+      const insidePanel =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+
+      if (!insidePanel) {
         this.hide();
       }
     });
   }
 
   show(): void {
-    this.modal.hidden = false;
+    if (!this.dialog.open) {
+      this.dialog.showModal();
+    }
   }
 
   hide(): void {
-    this.modal.hidden = true;
+    if (this.dialog.open) {
+      this.dialog.close();
+    }
+  }
+
+  private isOpen(): boolean {
+    return this.dialog.open;
   }
 }

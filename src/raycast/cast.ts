@@ -74,3 +74,21 @@ export function castRay(world: GridWorld, originX: number, originY: number, angl
 
   return { distance: 32, cellType: CellType.Wall, side };
 }
+
+export function hasLineOfSight(
+  world: GridWorld,
+  fromX: number,
+  fromY: number,
+  toX: number,
+  toY: number,
+): boolean {
+  const dx = toX - fromX;
+  const dy = toY - fromY;
+  const distance = Math.hypot(dx, dy);
+  if (distance < 0.001) {
+    return true;
+  }
+
+  const hit = castRay(world, fromX, fromY, Math.atan2(dy, dx));
+  return hit.distance >= distance - 0.2;
+}

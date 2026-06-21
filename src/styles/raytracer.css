@@ -134,6 +134,7 @@ body {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  z-index: 1;
 }
 
 .game-panel {
@@ -160,17 +161,28 @@ body {
 }
 
 .modal {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  overflow: visible;
   position: fixed;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(480px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+}
+
+.modal::backdrop {
   background: rgba(0, 0, 0, 0.65);
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  z-index: 20;
 }
 
 .modal__panel {
-  width: min(100%, 480px);
+  width: 100%;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;

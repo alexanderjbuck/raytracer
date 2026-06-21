@@ -38,9 +38,15 @@ export class DungeonApp {
     this.statusBar = statusBar;
     this.renderer = new GridRenderer('screen', RENDER_CONFIG);
     this.helpModal = new HelpModal('help-modal', 'help-close');
+
+    const helpButton = document.getElementById('btn-help');
+    if (!(helpButton instanceof HTMLButtonElement)) {
+      throw new Error('Help button not found');
+    }
+    helpButton.addEventListener('click', () => this.helpModal.show());
+
     this.lobby = new Lobby('lobby', {
       onPlay: (gameCode) => this.startGame(gameCode),
-      onHelp: () => this.helpModal.show(),
     });
   }
 
