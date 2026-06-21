@@ -1,12 +1,24 @@
+import type { HelpContent } from '../app/App';
+
 export class HelpModal {
   private readonly dialog: HTMLDialogElement;
   private readonly panel: HTMLElement;
+  private readonly title: HTMLElement;
+  private readonly list: HTMLUListElement;
   private readonly closeButton: HTMLButtonElement;
 
-  constructor(dialogId: string, closeButtonId: string) {
+  constructor(dialogId: string, closeButtonId: string, content: HelpContent) {
     const dialog = document.getElementById(dialogId);
     const closeButton = document.getElementById(closeButtonId);
-    if (!(dialog instanceof HTMLDialogElement) || !(closeButton instanceof HTMLButtonElement)) {
+    const title = document.getElementById('help-title');
+    const list = document.getElementById('help-list');
+
+    if (
+      !(dialog instanceof HTMLDialogElement) ||
+      !(closeButton instanceof HTMLButtonElement) ||
+      !(title instanceof HTMLElement) ||
+      !(list instanceof HTMLUListElement)
+    ) {
       throw new Error('Help modal elements not found');
     }
 
@@ -17,7 +29,11 @@ export class HelpModal {
 
     this.dialog = dialog;
     this.panel = panel;
+    this.title = title;
+    this.list = list;
     this.closeButton = closeButton;
+
+    this.setContent(content);
 
     this.closeButton.addEventListener('click', () => this.hide());
     this.dialog.addEventListener('click', (event) => {
@@ -36,6 +52,17 @@ export class HelpModal {
         this.hide();
       }
     });
+  }
+
+  setContent(content: HelpContent): void {
+    this.title.textContent = content.title;
+    this.list.replaceChildren(
+      ...content.items.map((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        return li;
+      }),
+    );
   }
 
   show(): void {

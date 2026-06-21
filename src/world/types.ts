@@ -1,4 +1,4 @@
-export const GRID_SIZE = 64;
+export const GRID_SIZE = 32;
 
 export enum CellType {
   Floor = 0,

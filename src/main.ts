@@ -1,4 +1,5 @@
 import { DungeonApp } from './app/DungeonApp';
+import { AppShell } from './ui/AppShell';
 import './styles/raytracer.css';
 
 function revealApp(): void {
@@ -6,8 +7,8 @@ function revealApp(): void {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new DungeonApp();
-  app.init();
+  const shell = new AppShell(new DungeonApp());
+  shell.init();
 
   requestAnimationFrame(() => {
     revealApp();

@@ -100,13 +100,8 @@ export class GridRenderer {
     this.bufferWidth = Math.trunc(config.width * config.resolution);
     this.bufferHeight = Math.trunc(config.height * config.resolution);
 
-    this.container.style.width = `${config.width}px`;
-    this.container.style.height = `${config.height}px`;
-    this.container.style.background = '#000';
-
     this.canvas = document.createElement('canvas');
-    this.canvas.style.width = `${config.width}px`;
-    this.canvas.style.height = `${config.height}px`;
+    this.canvas.className = 'game-screen__canvas';
     this.canvas.width = this.bufferWidth;
     this.canvas.height = this.bufferHeight;
     this.container.appendChild(this.canvas);
@@ -123,7 +118,15 @@ export class GridRenderer {
     return this.canvas;
   }
 
-  render(world: GridWorld, player: PlayerState, message?: string): void {
+  renderClear(): void {
+    for (let i = 0; i < this.bufferWidth * this.bufferHeight; i++) {
+      this.pixelBuffer.setPixel(i, [0, 0, 0]);
+    }
+    this.pixelBuffer.flush();
+    this.context.putImageData(this.pixelBuffer.getImageData(), 0, 0);
+  }
+
+  render(world: GridWorld, player: PlayerState): void {
     const fov = this.config.fov;
     const halfFov = fov / 2;
     const horizon = Math.floor(this.bufferHeight / 2);
@@ -152,13 +155,5 @@ export class GridRenderer {
     drawKeySprite(this.pixelBuffer, this.bufferWidth, this.bufferHeight, player, world);
     this.pixelBuffer.flush();
     this.context.putImageData(this.pixelBuffer.getImageData(), 0, 0);
-
-    if (message) {
-      this.context.fillStyle = 'rgba(0, 0, 0, 0.55)';
-      this.context.fillRect(0, this.bufferHeight - 28, this.bufferWidth, 28);
-      this.context.fillStyle = '#f0f0f0';
-      this.context.font = '12px system-ui, sans-serif';
-      this.context.fillText(message, 8, this.bufferHeight - 10);
-    }
   }
 }
