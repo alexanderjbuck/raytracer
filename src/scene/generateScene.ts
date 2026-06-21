@@ -25,6 +25,7 @@ function footprintRadius(type: PrimitiveType, rng: Rng): number {
 
 function makePrimitive(type: PrimitiveType, x: number, z: number, rng: Rng): SceneObject {
   const color = randomColor(rng);
+  const specular = rng.float(0, 1);
 
   switch (type) {
     case 'sphere': {
@@ -34,6 +35,7 @@ function makePrimitive(type: PrimitiveType, x: number, z: number, rng: Rng): Sce
         location: [x, FLOOR_Y + radius, z],
         color,
         radius,
+        specular,
       };
     }
     case 'cube': {
@@ -43,6 +45,7 @@ function makePrimitive(type: PrimitiveType, x: number, z: number, rng: Rng): Sce
         location: [x, FLOOR_Y + size / 2, z],
         color,
         size,
+        specular,
       };
     }
     case 'cylinder': {
@@ -54,6 +57,7 @@ function makePrimitive(type: PrimitiveType, x: number, z: number, rng: Rng): Sce
         color,
         radius,
         height,
+        specular,
       };
     }
     case 'cone': {
@@ -65,6 +69,7 @@ function makePrimitive(type: PrimitiveType, x: number, z: number, rng: Rng): Sce
         color,
         radius,
         height,
+        specular,
       };
     }
   }

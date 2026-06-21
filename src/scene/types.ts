@@ -19,6 +19,7 @@ export interface Sphere {
   location: Vec3;
   color: Color;
   radius: number;
+  specular: number;
 }
 
 export interface Cube {
@@ -26,6 +27,7 @@ export interface Cube {
   location: Vec3;
   color: Color;
   size: number;
+  specular: number;
 }
 
 export interface Cylinder {
@@ -34,6 +36,7 @@ export interface Cylinder {
   color: Color;
   radius: number;
   height: number;
+  specular: number;
 }
 
 export interface Cone {
@@ -42,6 +45,7 @@ export interface Cone {
   color: Color;
   radius: number;
   height: number;
+  specular: number;
 }
 
 export type SceneObject = Plane | Sphere | Cube | Cylinder | Cone;

@@ -20,4 +20,15 @@ describe('generateScene', () => {
     expect(a.objects.length).toBe(b.objects.length);
     expect(a.objects[5]).toEqual(b.objects[5]);
   });
+
+  it('assigns specular between 0 and 1', () => {
+    const world = generateScene(16, 42);
+    for (const object of world.objects.slice(1)) {
+      expect(object.type).not.toBe('plane');
+      if (object.type !== 'plane') {
+        expect(object.specular).toBeGreaterThanOrEqual(0);
+        expect(object.specular).toBeLessThanOrEqual(1);
+      }
+    }
+  });
 });

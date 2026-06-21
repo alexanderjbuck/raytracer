@@ -17,6 +17,7 @@ const sphere: Sphere = {
   location: [0, 0, -10],
   color: [255, 0, 0],
   radius: 1,
+  specular: 0,
 };
 
 const plane: Plane = {
@@ -29,6 +30,7 @@ const cube: Cube = {
   location: [0, 0, -10],
   color: [0, 255, 0],
   size: 2,
+  specular: 0,
 };
 
 const cylinder: Cylinder = {
@@ -37,6 +39,7 @@ const cylinder: Cylinder = {
   color: [0, 0, 255],
   radius: 1,
   height: 2,
+  specular: 0,
 };
 
 const cone: Cone = {
@@ -45,6 +48,7 @@ const cone: Cone = {
   color: [255, 255, 0],
   radius: 1,
   height: 2,
+  specular: 0,
 };
 
 describe('raySphereIntersect', () => {
