@@ -4,7 +4,7 @@ A browser-based software raytracer written in TypeScript. Renders a low-resoluti
 
 **Live demo:** [alexanderjbuck.github.io/raytracer](https://alexanderjbuck.github.io/raytracer/)
 
-![Preview of the raytracer output](docs/preview.svg)
+![Preview of the raytracer output](docs/preview.png)
 
 ## Local development
 

@@ -44,7 +44,7 @@
           <div id="screen" class="game-screen__viewport" aria-label="Render view"></div>
           <div id="screen-overlay" class="screen-overlay">
             <button
-              id="btn-play"
+              id="btn-play-overlay"
               class="screen-overlay__play"
               type="button"
               aria-label="Play"
@@ -53,6 +53,39 @@
               &#9654;
             </button>
           </div>
+        </div>
+
+        <div class="render-controls" aria-label="Render controls">
+          <div class="render-controls__group">
+            <button
+              id="btn-resolution-down"
+              class="control-button"
+              type="button"
+              aria-label="Decrease resolution"
+              title="Decrease resolution"
+            >
+              &minus;
+            </button>
+            <span id="resolution-label" class="control-label" aria-live="polite">50%</span>
+            <button
+              id="btn-resolution-up"
+              class="control-button"
+              type="button"
+              aria-label="Increase resolution"
+              title="Increase resolution"
+            >
+              +
+            </button>
+          </div>
+          <button
+            id="btn-play"
+            class="control-button control-button--primary"
+            type="button"
+            aria-label="Play"
+            title="Play"
+          >
+            Play
+          </button>
         </div>
       </section>
 

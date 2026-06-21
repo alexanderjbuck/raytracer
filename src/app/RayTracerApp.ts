@@ -85,6 +85,15 @@ export class RayTracerApp {
     }
   }
 
+  getResolution(): number {
+    return this.renderer.getResolution();
+  }
+
+  setResolution(resolution: number): void {
+    this.renderer.setResolution(resolution);
+    this.renderer.render();
+  }
+
   private updateLight(): void {
     const light = this.world.lights[0];
     const deltaSeconds = this.motionStepSeconds;

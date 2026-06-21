@@ -8,12 +8,18 @@ export class CanvasRenderer {
   private readonly container: HTMLElement;
   private readonly canvas: HTMLCanvasElement;
   private readonly context: CanvasRenderingContext2D;
-  private readonly pixelBuffer: PixelBuffer;
-  private readonly bufferWidth: number;
-  private readonly bufferHeight: number;
+  private readonly displayWidth: number;
+  private readonly displayHeight: number;
+  private pixelBuffer: PixelBuffer;
+  private bufferWidth: number;
+  private bufferHeight: number;
+  private resolution: number;
 
   constructor(containerId: string, world: World, config: RenderConfig) {
     this.world = world;
+    this.displayWidth = config.width;
+    this.displayHeight = config.height;
+    this.resolution = config.resolution;
 
     const container = document.getElementById(containerId);
     if (!container) {
@@ -21,16 +27,17 @@ export class CanvasRenderer {
     }
     this.container = container;
 
-    this.bufferWidth = Math.trunc(config.width * config.resolution);
-    this.bufferHeight = Math.trunc(config.height * config.resolution);
+    this.bufferWidth = Math.trunc(this.displayWidth * this.resolution);
+    this.bufferHeight = Math.trunc(this.displayHeight * this.resolution);
 
-    this.container.style.width = `${config.width}px`;
-    this.container.style.height = `${config.height}px`;
+    this.container.style.width = '100%';
+    this.container.style.height = '100%';
     this.container.style.background = '#000';
 
     this.canvas = document.createElement('canvas');
-    this.canvas.style.width = `${config.width}px`;
-    this.canvas.style.height = `${config.height}px`;
+    this.canvas.className = 'game-screen__canvas';
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
     this.canvas.width = this.bufferWidth;
     this.canvas.height = this.bufferHeight;
     this.container.appendChild(this.canvas);
@@ -40,6 +47,19 @@ export class CanvasRenderer {
       throw new Error('Failed to acquire 2D canvas context');
     }
     this.context = context;
+    this.pixelBuffer = new PixelBuffer(this.bufferWidth, this.bufferHeight);
+  }
+
+  getResolution(): number {
+    return this.resolution;
+  }
+
+  setResolution(resolution: number): void {
+    this.resolution = resolution;
+    this.bufferWidth = Math.trunc(this.displayWidth * resolution);
+    this.bufferHeight = Math.trunc(this.displayHeight * resolution);
+    this.canvas.width = this.bufferWidth;
+    this.canvas.height = this.bufferHeight;
     this.pixelBuffer = new PixelBuffer(this.bufferWidth, this.bufferHeight);
   }
 

@@ -1,6 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200" role="img" aria-label="Three shaded spheres on a black background">
-  <rect width="500" height="200" fill="#000"/>
-  <circle cx="250" cy="118" r="35" fill="#003300"/>
-  <circle cx="250" cy="100" r="26" fill="#330000"/>
-  <circle cx="250" cy="86" r="18" fill="#000033"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Raytraced scene with checkerboard floor, colorful primitives, and a drifting point light">
+  <rect width="640" height="400" fill="#202228"/>
+  <rect x="0" y="248" width="640" height="152" fill="#14161a"/>
+  <g opacity="0.95">
+    <rect x="40" y="286" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="96" y="286" width="56" height="28" fill="#3f556b"/>
+    <rect x="152" y="286" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="208" y="286" width="56" height="28" fill="#3f556b"/>
+    <rect x="264" y="286" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="320" y="286" width="56" height="28" fill="#3f556b"/>
+    <rect x="376" y="286" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="432" y="286" width="56" height="28" fill="#3f556b"/>
+    <rect x="488" y="286" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="544" y="286" width="56" height="28" fill="#3f556b"/>
+    <rect x="68" y="314" width="56" height="28" fill="#3f556b"/>
+    <rect x="124" y="314" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="180" y="314" width="56" height="28" fill="#3f556b"/>
+    <rect x="236" y="314" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="292" y="314" width="56" height="28" fill="#3f556b"/>
+    <rect x="348" y="314" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="404" y="314" width="56" height="28" fill="#3f556b"/>
+    <rect x="460" y="314" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="516" y="314" width="56" height="28" fill="#3f556b"/>
+    <rect x="96" y="342" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="152" y="342" width="56" height="28" fill="#3f556b"/>
+    <rect x="208" y="342" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="264" y="342" width="56" height="28" fill="#3f556b"/>
+    <rect x="320" y="342" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="376" y="342" width="56" height="28" fill="#3f556b"/>
+    <rect x="432" y="342" width="56" height="28" fill="#6b4f7a"/>
+    <rect x="488" y="342" width="56" height="28" fill="#3f556b"/>
+  </g>
+  <ellipse cx="320" cy="300" rx="250" ry="70" fill="#000" opacity="0.18"/>
+  <rect x="198" y="214" width="54" height="54" fill="#2f8f83"/>
+  <rect x="210" y="202" width="30" height="30" fill="#5ec7b8"/>
+  <polygon points="360,252 392,196 424,252" fill="#c98b3d"/>
+  <polygon points="372,252 392,210 412,252" fill="#e8b35d"/>
+  <circle cx="286" cy="236" r="30" fill="#b64d5e"/>
+  <circle cx="280" cy="228" r="18" fill="#df7a86"/>
+  <circle cx="430" cy="168" r="34" fill="#fff4c8" opacity="0.22"/>
+  <circle cx="430" cy="168" r="18" fill="#fff4c8"/>
+  <circle cx="430" cy="168" r="10" fill="#fffef0"/>
 </svg>

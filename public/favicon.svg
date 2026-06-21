@@ -1,7 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Raytracer">
-  <rect width="32" height="32" rx="6" fill="#111"/>
-  <circle cx="16" cy="18" r="7" fill="#0a0"/>
-  <circle cx="16" cy="15" r="5" fill="#a00"/>
-  <circle cx="16" cy="13" r="3" fill="#00a"/>
-  <line x1="16" y1="4" x2="10" y2="22" stroke="#fff8" stroke-width="1.5" stroke-linecap="round"/>
+  <rect width="32" height="32" rx="6" fill="#111111"/>
+  <rect x="2" y="22" width="6" height="4" fill="#6b4f7a"/>
+  <rect x="8" y="22" width="6" height="4" fill="#3f556b"/>
+  <rect x="14" y="22" width="6" height="4" fill="#6b4f7a"/>
+  <rect x="20" y="22" width="6" height="4" fill="#3f556b"/>
+  <rect x="26" y="22" width="4" height="4" fill="#6b4f7a"/>
+  <rect x="5" y="26" width="6" height="4" fill="#3f556b"/>
+  <rect x="11" y="26" width="6" height="4" fill="#6b4f7a"/>
+  <rect x="17" y="26" width="6" height="4" fill="#3f556b"/>
+  <rect x="23" y="26" width="6" height="4" fill="#6b4f7a"/>
+  <rect x="10" y="14" width="7" height="7" fill="#2f8f83"/>
+  <circle cx="21" cy="17" r="4" fill="#b64d5e"/>
+  <polygon points="15,12 18,6 21,12" fill="#c98b3d"/>
+  <circle cx="24" cy="8" r="5" fill="#fff4c8" opacity="0.35"/>
+  <circle cx="24" cy="8" r="2.5" fill="#fffef0"/>
 </svg>
